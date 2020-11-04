@@ -4,6 +4,7 @@
 
 
 library(RColorBrewer)
+library(viridis)
 
 
 ## Data read
@@ -60,5 +61,15 @@ metadata<-read.csv("Countries_metadata.csv")
  legend("topright", levels(as.factor(emissions_death_pop_metadata_DF$metadata.World.bank.region.metadata_ID.)), col=palette, bty="n", pch=16, cex=0.8)
  
  
+ #Reduce the plot to Europe & Central Asia
+
+ select_europe<-emissions_death_pop_metadata_DF$metadata.World.bank.region.metadata_ID.=="Europe & Central Asia"
+ income_vec=as.factor(emissions_death_pop_metadata_DF$metadata.World.bank..4.income.groups.2017.metadata_ID.[select_europe])
+ palette_seq<-brewer.pal(3, "Set1")
+ plot(emissions_death_pop_DF$death_by_population_DF.Deaths_by_million[select_europe], emissions_death_pop_DF$population_dens.X2018.pop_ID.[select_europe], cex=emissions_death_pop_DF$emissions.X2018.emissions_ID.[select_europe], 
+      ylab="Population density", xlab="Cumulated death per million as of 3rd Oct 2020", ylim=c(0,670), xlim=c(0, 1300), col="#FF8C0033", pch=16)
+ text(emissions_death_pop_DF$death_by_population_DF.Deaths_by_million[select_europe], emissions_death_pop_DF$population_dens.X2018.pop_ID.[select_europe], death_pop_DF$death_by_population_DF.Group.1[select_europe], cex=0.6, col=palette_seq[income_vec])
+ legend("bottomright", levels(income_vec), text.col=palette_seq, bty="n", cex=0.8)
+ legend("topleft", "Size corresponds to emissions", col = "#FF8C0080", bty="n", pch=16, pt.cex=2.5, cex=0.8)
  
  
