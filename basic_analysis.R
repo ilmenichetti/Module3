@@ -13,7 +13,6 @@ add.alpha <- function(col, alpha=1){
 
 
 ## Data read
-#liberty_index<-read.csv("cliberities_fh.csv")
 emissions<-read.csv("co2_emissions_tonnes_per_person.csv")
 population_dens<-read.csv("population_density_per_square_km.csv")
 population<-read.csv("population_total.csv")
