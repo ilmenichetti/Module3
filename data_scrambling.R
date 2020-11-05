@@ -30,11 +30,11 @@ for(i in 2:dim(deaths)[2]){
 
 
 ####### MESSING UP SOME SEPARATORS IN THE .csv
-write.csv(emissions, "./corrupted_data/co2_emissions_tonnes_per_person.csv")
-write.csv(population_dens, "./corrupted_data/population_density_per_square_km.csv")
-write.csv(population, "./corrupted_data/population_total.csv")
-write.csv(deaths, "./corrupted_data/time_series_covid19_deaths_global.csv")
-write.csv(metadata, "./corrupted_data/Countries_metadata.csv")
+write.table(emissions, "./corrupted_data/co2_emissions_tonnes_per_person.csv", sep=";")
+write.table(population_dens, "./corrupted_data/population_density_per_square_km.csv", sep="\t")
+write.table(population, "./corrupted_data/population_total.csv")
+write.table(deaths, "./corrupted_data/time_series_covid19_deaths_global.csv")
+write.table(metadata, "./corrupted_data/Countries_metadata.csv")
 
 
 
