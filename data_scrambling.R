@@ -18,23 +18,33 @@ for(i in 2:dim(population_dens)[2]){
 }
 
 ####### MIXING A FEW CHARACTERS IN SOME COLUMNS TO MAKE IT READ LIKE FACTOR
-for(i in 2:dim(population)[2]){
-  population[as.logical(rbinom(dim(population)[1], 10, 0.0015)), i]="Error: missing"
+population_scrambled<-population
+for(i in 2:dim(population_scrambled)[2]){
+  population_scrambled[as.logical(rbinom(dim(population_scrambled)[1], 10, 0.0015)), i]="Error: missing"
 }
 
 ####### ADDING WHITE SPACES
+deaths_scrambled<-deaths
 for(i in 2:dim(deaths)[2]){
-  deaths[as.logical(rbinom(dim(deaths)[1], 10, 0.002)), i]=" "
+  deaths_scrambled[as.logical(rbinom(dim(deaths_scrambled)[1], 10, 0.002)), i]=" "
 }
+
+
+colnames(metadata)[3]<-"four regions"
+colnames(metadata)[4]<-"eight regions"
+colnames(metadata)[6]<-"six regions"
+
+
+
 
 
 
 ####### MESSING UP SOME SEPARATORS IN THE .csv
-write.table(emissions, "./corrupted_data/co2_emissions_tonnes_per_person.csv", sep=";")
-write.table(population_dens, "./corrupted_data/population_density_per_square_km.csv", sep="\t")
-write.table(population, "./corrupted_data/population_total.csv")
-write.table(deaths, "./corrupted_data/time_series_covid19_deaths_global.csv")
-write.table(metadata, "./corrupted_data/Countries_metadata.csv")
+write.table(emissions, "./corrupted_data/co2_emissions_tonnes_per_person.csv", sep=";", dec = ",")
+write.table(population_dens_scrambled, "./corrupted_data/population_density_per_square_km.csv", sep="\t")
+write.table(population_scrambled, "./corrupted_data/population_total.csv")
+write.table(deaths_scrambled, "./corrupted_data/time_series_covid19_deaths_global.csv")
+write.table(metadata, "./corrupted_data/Countries metadata.csv")
 
 
 
